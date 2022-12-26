@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Polls(models.Model):
     title = models.CharField(max_length=300)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
+    author = models.ForeignKey(User, on_delete=models.CASCADE ,blank= True)
     pub_date = models.DateTimeField(default=timezone.now)
     active = models.BooleanField(default=True)
 
@@ -38,17 +38,11 @@ class Choices(models.Model):
     poll = models.ForeignKey(Polls, on_delete=models.CASCADE, default=None)
 
     def get_choices(self):
-        Options = (Option.objects.get()).filter(poll=self)
-        print(Options)
+        Options = Option.objects.filter(poll=self.poll)
         return Options
-
-    @property
-    def get_vote_count(self):
-        return self.vote_set.count()
 
     def __str__(self):
         return self.poll.title+' '
-    # get_choices(1)
 
 
 class Vote(models.Model):
