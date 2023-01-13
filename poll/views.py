@@ -31,6 +31,19 @@ def get_polls(requests):
 
 
 @api_view(["GET", "POST"])
+def get_all_polls(requests):
+    if requests.method == "GET":
+        try:
+            qs = Polls.objects.all()
+            serializer = PollsSerializer(qs, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response(e, status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET", "POST"])
 def get_votes(requests, poll_id):
     try:
         if requests.method == "GET":
@@ -40,8 +53,8 @@ def get_votes(requests, poll_id):
                 if qs.exists():
                     serializer = VoteSerializer(qs, many=True)
                     return Response(serializer.data)
-                return Response("No Votes till now" , status=status.HTTP_404_NOT_FOUND)
-            return Response("No Such poll",status=status.HTTP_404_NOT_FOUND)
+                return Response("No Votes till now", status=status.HTTP_404_NOT_FOUND)
+            return Response("No Such poll", status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response(e, status=status.HTTP_404_NOT_FOUND)
 
@@ -78,7 +91,7 @@ def get_choices(request, poll_id):
             serializer = OptionSerializer(data=data, many=True)
             if serializer.is_valid():
                 qs = Polls.objects.get(id=poll_id)
-                serializer.save(poll   = qs)
+                serializer.save(poll=qs)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -87,30 +100,30 @@ def get_choices(request, poll_id):
             return Response(e, status=status.HTTP_404_NOT_FOUND)
 
 
-
 @api_view(["GET", "POST"])
 def vote(request, poll_id):
     if request.method == "GET":
         try:
-            qs = Vote.objects.get(poll=poll_id , user = request.user)
+            qs = Vote.objects.get(poll=poll_id, user=request.user)
             serializer = VoteSerializer(qs)
             return Response(serializer.data)
         except Exception as e:
             return Response(e, status=status.HTTP_404_NOT_FOUND)
     elif request.method == "POST":
-        try: 
+        try:
             data = request.data
             user = request.user
             qs = Polls.objects.get(id=poll_id)
             if qs.can_vote(user):
                 serializer = VoteSerializer(data=data)
-                
+
                 if serializer.is_valid():
-                    serializer.save(user = user)
+                    serializer.save(user=user)
                     return Response(serializer.data, status=status.HTTP_201_CREATED)
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            return Response("You already voted", status=status.HTTP_200_OK)
+            qs = Vote.objects.get(poll=poll_id, user=request.user)
+            c = qs.selected.option
+            serializer = OptionSerializer(qs)
+            return Response("You already voted "+str(c), status=status.HTTP_200_OK)
         except Exception as e:
             return Response(e, status=status.HTTP_404_NOT_FOUND)
-
-

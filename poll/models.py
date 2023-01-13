@@ -19,10 +19,11 @@ class Polls(models.Model):
     @property
     def get_vote_count(self):
         votes = Vote.objects.filter(poll = self)
-        return len(votes)
-        
+        return len(votes)   
     def __str__(self):
         return self.title
+    class Meta:
+        ordering = ["-pub_date"]
 
 
 class Option(models.Model):
@@ -34,9 +35,7 @@ class Option(models.Model):
 
 
 class Choices(models.Model):
-
     poll = models.ForeignKey(Polls, on_delete=models.CASCADE, default=None)
-
     def get_choices(self):
         Options = Option.objects.filter(poll=self.poll)
         return Options
