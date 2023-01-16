@@ -3,10 +3,38 @@ from rest_framework.response import Response
 from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import generics
+from django.contrib.auth import authenticate
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.status import (
+    HTTP_400_BAD_REQUEST,
+    HTTP_404_NOT_FOUND,
+    HTTP_200_OK
+)
+
+class UserDetailAPI(APIView):
+  authentication_classes = (TokenAuthentication,)
+  permission_classes = (AllowAny,)
+  def get(self,request,*args,**kwargs):
+    user = User.objects.get(id=request.user.id)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+class RegisterUserAPIView(generics.CreateAPIView):
+  permission_classes = (AllowAny,)
+  serializer_class = RegisterSerializer
 
 
+@csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def get_polls(requests):
     if requests.method == "GET":
         try:
@@ -30,7 +58,10 @@ def get_polls(requests):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+@csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def get_all_polls(requests):
     if requests.method == "GET":
         try:
@@ -43,7 +74,10 @@ def get_all_polls(requests):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+@csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def get_votes(requests, poll_id):
     try:
         if requests.method == "GET":
@@ -75,7 +109,10 @@ def get_votes(requests, poll_id):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+@csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def get_choices(request, poll_id):
     if request.method == "GET":
         try:
@@ -100,7 +137,10 @@ def get_choices(request, poll_id):
             return Response(e, status=status.HTTP_404_NOT_FOUND)
 
 
+
+@csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def vote(request, poll_id):
     if request.method == "GET":
         try:
