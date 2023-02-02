@@ -1,0 +1,42 @@
+.poll-container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.poll-container h2 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.radio-option input[type="radio"] {
+  margin-right: 10px;
+  color: #ea4c88;
+}
+
+button[id="submit-button"] {
+  padding: 10px 20px;
+  background-color: #ea4c88;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+button[id="submit-button"]:hover {
+  background-color:  #f09fbe;
+}
+
+.backk{
+  display: flex;
+  align-items: flex-start;
+  padding: 100px auto;
+}

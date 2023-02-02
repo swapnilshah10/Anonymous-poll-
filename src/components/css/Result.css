@@ -1,0 +1,60 @@
+.poll-results {
+  display: flex; 
+  font-family: 'PT Sans';
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  margin: 20px;
+}
+
+h1{
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 40px;  
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.poll-option-text {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.poll-option-bar {
+  height: 20px;
+  width: 200px;
+  background-color: lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+  
+}
+
+.poll-option-bar-fill {
+  height: 100%;
+  background-color: #ea4c88;
+  width: 50%;
+  
+}
+
+.buttonn {  
+    align-self: start;
+    font-size: 1.2em;
+    margin: 10px;
+    text-decoration: none;
+    border: rgb(17, 17, 17);
+    background-color: #ea4c88;
+    border-radius: 30rem;
+    border-style:  solid;
+    padding: 10px;
+    font-size: small;
+}
+
+.backk{
+    display: flex;
+    align-items: flex-start;
+    padding: 100px auto;
+}
