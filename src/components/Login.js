@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Link  }  from "react-router-dom" ;
 import './css/Login.css';
-
-
+import {  useDispatch } from 'react-redux'
+import { setlogin } from '../features/Loginslice'
 let url = "http://127.0.0.1:8000/api-auth/";
 
 
@@ -21,6 +21,8 @@ function Login() {
   const [error, setError] = useState({});
   const [isLoggedIn, setLogin] = useState("");
 
+
+  const dispatch = useDispatch()
 
   let onpassChange = (e) => {
     setPassword(e.target.value);
@@ -42,6 +44,7 @@ function Login() {
       .then((res) => {  
         console.log(res ,  res.data.token)
         localStorage.setItem('token', res.data.token)
+        dispatch(setlogin())
         setLogin(true);
       })
       .catch((err) => {

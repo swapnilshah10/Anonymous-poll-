@@ -2,20 +2,23 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #151515;
-  color: black;
+  /* background-color: #151515; */
+  color: rgb(10, 1, 1);
   padding: 10px;
+  padding-left: 200px;
+  padding-right: 200px;
+  border: black 0.5px solid;
 }
 
 #name{
-  color: rgb(251, 248, 248);
+  color: rgb(13, 13, 13);
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
 }
 
 .nav-items {
-  color: rgb(244, 239, 239);
+  color: rgb(18, 17, 17);
   font-size: 16px;
   margin-right: 20px;
   text-decoration: none;
@@ -28,4 +31,8 @@ nav {
   color: rgb(13, 12, 12);
   padding: 5px 10px;
   text-decoration: none;
+  /* display: flex;x` */
+  text-align:  center;
+  align-content:  center;
+  justify-content: center;
 }

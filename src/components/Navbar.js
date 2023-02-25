@@ -1,20 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState ,useEffect} from "react";
+import { useSelector , useDispatch} from 'react-redux'
+import { setlogout } from '../features/Loginslice'
+import './css/Nav.css';
+
 
 function Navbar() {
   const token = localStorage.getItem("token");
-  const [status , setData ]= useState("Log Out")
+  const status = useSelector((state) => state.login.value)
+  console.log(status)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    if (token === "undefined" || token === null) {
-      setData("Log In");
+  let button = () =>{
+    if(status){
+      return <button  id = "login-logout-button"><Link to="/login" className="nav-items" onClick={onClk}>Log Out</Link></button>
     }
-  }, []);
+    else{
+      return <button  id = "login-logout-button"><Link to="/login" className="nav-items">Log In</Link></button>
+    }
+  }
 
 
   let onClk = () => {
   localStorage.removeItem("token");
+  dispatch(setlogout())
   }
   return (
     <div>
@@ -27,9 +37,7 @@ function Navbar() {
           <Link to="/about" className="nav-items">About</Link>
           <Link to="/createpoll" className="nav-items">Create Poll</Link>
           <Link to="/mypoll" className="nav-items">My Polls</Link>
-          <Link to="/login" id="login-logout-button" onClick={onClk}>
-            {status}
-          </Link>
+          {button()}
         </div>
       </nav>
 
