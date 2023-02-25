@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+let login = false
+if (localStorage.getItem('token')) {
+  login = true
+}
+
+
 export const loginSlice = createSlice({
   name: 'login',
   initialState: {
-    value: false,
+    value: login,
   },
   reducers: {
     setlogin: (state) => {

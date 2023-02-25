@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './css/CreatePoll.css';
+import React, { useState } from "react";
+import "./css/CreatePoll.css";
 import axios from "axios";
-import { Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 const CreatePoll = () => {
-  const [pollQuestion, setPollQuestion] = useState('');
-  const [options, setOptions] = useState(['']);
+  const [pollQuestion, setPollQuestion] = useState("");
+  const [options, setOptions] = useState([""]);
   const [created, setCreated] = useState(false);
-  const url = 'http://127.0.0.1:8000/user_polls/';
+  const url = "http://127.0.0.1:8000/user_polls/";
   const token = localStorage.getItem("token");
   let config = {
     headers: {
@@ -24,7 +24,7 @@ const CreatePoll = () => {
   };
 
   const addOption = () => {
-    setOptions([...options, '']);
+    setOptions([...options, ""]);
   };
 
   const deleteOption = (index) => {
@@ -37,12 +37,21 @@ const CreatePoll = () => {
     e.preventDefault();
 
     const data = {
-    title: pollQuestion,
-    options: options,
-     
-};
+      title: pollQuestion,
+      options: options,
+    };
+    if (pollQuestion === "") {
+      alert("Please add a question");
+
+      return;
+    }
+    if (options.length < 2) {
+      alert("Please add more options");
+      return;
+    }
+
     await axios
-      .post(url, data ,  config)
+      .post(url, data, config)
       .then((res) => {
         if (res.status === 201) {
           console.log(res.data);
@@ -50,13 +59,11 @@ const CreatePoll = () => {
           setCreated(true);
         }
       })
-      .catch((err) => {
-        
-      });
+      .catch((err) => {});
   };
-  
-  if(created){
-      return <Navigate to = '../'/> 
+
+  if (created) {
+    return <Navigate to="../" />;
   }
 
   return (
@@ -80,15 +87,25 @@ const CreatePoll = () => {
             value={option}
             onChange={handleOptionChange(index)}
           />
-          <button type="button" onClick={() => deleteOption(index)} className="delete-option-button">
+          <button
+            type="button"
+            onClick={() => deleteOption(index)}
+            className="delete-option-button"
+          >
             Delete Option
-          </button> 
+          </button>
         </div>
       ))}
       <button type="button" onClick={addOption} className="add-option-button">
         Add Option
       </button>
-      <button type="submit" className="create-poll-button" onClick={handleSubmit}>Create Poll</button>
+      <button
+        type="submit"
+        className="create-poll-button"
+        onClick={handleSubmit}
+      >
+        Create Poll
+      </button>
     </form>
   );
 };

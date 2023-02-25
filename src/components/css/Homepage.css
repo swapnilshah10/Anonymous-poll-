@@ -1,5 +1,7 @@
-.poll-container {
+.poll-container1 {
   font-family: 'PT Sans';
+  width: 50%;
+  margin: 0 auto;
 }
 
 .container{

@@ -26,7 +26,7 @@ function HomePage() {
     <>
     
     <div className ="container">
-      <div className="poll-container">
+      <div className="poll-container1">
         <ul className="poll-list">
           {data &&
             data.map((item) => {

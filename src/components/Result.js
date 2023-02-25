@@ -9,6 +9,7 @@ function Result() {
   const params = useParams();
   const poll_id = params.id;
   const token = localStorage.getItem("token");
+  const [title , setTitle] = useState("Default");
   const [results , setResults] = useState([{
     option : "option 1",
     value : 50
@@ -30,7 +31,9 @@ function Result() {
     await axios
       .get(url,data, config)
       .then((res) => {
-        setResults(res.data);
+        setResults(res.data.result);
+        setTitle(res.data.title);
+        console.log(res.data);
       })
       .catch((err) => {
         // console.log(data);
@@ -52,6 +55,7 @@ function Result() {
 
       <div className="poll-results">
         <h1>Poll Results</h1>
+        <h2>{title}</h2>
       {
         results&&results.map((result) => {
           return (

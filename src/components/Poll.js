@@ -61,13 +61,14 @@ function PollApp() {
     .post(voteUrl, data, config)
     .then((res) => {
       if (res.data.slice(0,17) ==="You already voted"){
-        console.log("You have already voted")
         alert(res.data )
+        setVoted(true);
       }
       else{
         alert('Your vote has been recorded')
+        setVoted(true);
       }
-      setVoted(true);
+      
     })
     .catch((err) => {
       // console.log(data);
