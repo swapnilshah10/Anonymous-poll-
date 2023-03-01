@@ -18,12 +18,6 @@ This is a web application for conducting anonymous polls. With this app, you can
 - The frontend of the application is built with React.js and CSS.
 - The application is responsive and can be used on both desktop and mobile devices.
 
-## Requirements
-
-- Node.js and npm (Node Package Manager)
-- React.js
-- CSS
-
 ## Installation
 
 1. Clone the repository to your local machine
@@ -42,11 +36,7 @@ npm install 4. Start the development server
 
 ## Contributing
 
-We welcome contributions to this project. If you have any ideas or suggestions, please open an issue or create a pull request.
-
-## License
-
-This project is licensed under the MIT License.
+I welcome contributions to this project. If you have any ideas or suggestions, please open an issue or create a pull request.
 
 ## SOME IMAGES OF THE PROJECT
 
