@@ -1,12 +1,17 @@
 .create-poll-form {
 
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-height: 85vh;
-    max-width: 70%;
-    overflow-y: scroll;
-  }
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 85vh;
+  max-width: 70%;
+  overflow-y: scroll;
+  background-color: #9fd1f0b1;
+}
+
+.create-poll-form::-webkit-scrollbar {
+  display: none;
+}
 
 .form-group {
   margin-bottom: 20px;
@@ -28,7 +33,8 @@ input[type="text"] {
 
 .add-option-button,
 .create-poll-button {
-  background-color:  #ea4c88;
+  background-color: #4c96ea;
+  ;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -38,15 +44,17 @@ input[type="text"] {
 }
 
 .delete-option-button {
-    background-color:  #ea4c88;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    margin: 10px;
-  }
+  background-color: #4c96ea;
+  ;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
 .add-option-button:hover,
 .create-poll-button:hover {
-  background-color: #f1a5c2;
+  background-color: #6962eb;
 }

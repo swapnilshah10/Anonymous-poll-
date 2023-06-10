@@ -11,7 +11,7 @@ function PollApp() {
   const [options, setOptions] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [poll, setPoll] = useState({ title: "Default" });
-  const [voted , setVoted] = useState(false);
+  const [voted, setVoted] = useState(false);
   const token = localStorage.getItem("token");
   let config = {
     headers: {
@@ -48,36 +48,36 @@ function PollApp() {
       alert("Please select an option");
     }
   };
-  let voteUrl =  "http://127.0.0.1:8000/" + poll_id + "/vote/";
+  let voteUrl = "http://127.0.0.1:8000/" + poll_id + "/vote/";
 
-  let vote = async() =>{
+  let vote = async () => {
     let data = {
-      poll : poll_id,
-      selected : selectedOption
+      poll: poll_id,
+      selected: selectedOption
     }
-    
-    
+
+
     await axios
-    .post(voteUrl, data, config)
-    .then((res) => {
-      if (res.data.slice(0,17) ==="You already voted"){
-        alert(res.data )
-        setVoted(true);
-      }
-      else{
-        alert('Your vote has been recorded')
-        setVoted(true);
-      }
-      
-    })
-    .catch((err) => {
-      // console.log(data);
-      // setError(JSON.parse(err.request.response))
-    });
+      .post(voteUrl, data, config)
+      .then((res) => {
+        if (res.data.slice(0, 17) === "You already voted") {
+          alert(res.data)
+          setVoted(true);
+        }
+        else {
+          alert('Your vote has been recorded')
+          setVoted(true);
+        }
+
+      })
+      .catch((err) => {
+        // console.log(data);
+        // setError(JSON.parse(err.request.response))
+      });
   }
-  let turl = "../"+ poll_id +"/result/";
-  if(voted){
-      return <Navigate to = {turl}/> 
+  let turl = "../" + poll_id + "/result/";
+  if (voted) {
+    return <Navigate to={turl} />
   }
 
   return (
@@ -92,10 +92,10 @@ function PollApp() {
         <form id="poll-form">
           {options &&
             options.map((option) => {
-            return (<div className = 'radio-option' key ={option.id}>
-      <input type="radio" id={option.id} name="color" value={option.option}/>
-      <label htmlFor={option.option}>{option.option}</label>
-    </div>)
+              return (<div className='radio-option' key={option.id}>
+                <input type="radio" id={option.id} name="color" value={option.option} />
+                <label htmlFor={option.option}>{option.option}</label>
+              </div>)
             })}
         </form>
         <button id="submit-button" onClick={onClick}>

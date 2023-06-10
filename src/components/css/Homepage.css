@@ -2,27 +2,36 @@
   font-family: 'PT Sans';
   width: 50%;
   margin: 0 auto;
+
+  
 }
 
 .container{
   max-height: 85vh;
   overflow-y: scroll;
+  /* overflow-y: hidden; */
+  scrollbar-width: none;
 }
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 .poll-list {
   list-style-type: none;
+  
 }
 
 .poll-item {    
   font-size: 1.2em;
   width: 100%;
   margin-top: 10px;
-  /* background-color: rgb(216, 244, 244); */
   height: fit-content;
   text-decoration: none;
   color: rgb(28, 22, 77);
-  border: rgb(17, 17, 17);
-  border-style:  solid;
+  background-color: rgb(175, 207, 231);
   border-radius: 3rem; 
+  text-align: center;
 }
 
 
@@ -30,10 +39,8 @@
   font-size: 1.2em;
   margin: 10px;
   text-decoration: none;
-  border: rgb(17, 17, 17);
-  background-color: #ea4c88;
+  background-color: #4c96ea;
   border-radius: 30rem;
-  border-style:  solid;
   padding: 10px;
   font-size: small;
 }

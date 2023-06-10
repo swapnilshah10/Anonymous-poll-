@@ -2,6 +2,8 @@
   width: 80%;
   margin: 50px auto;
   text-align: center;
+  background-color: #9fd1f0b1;
+  padding: 40px 60px;
 }
 
 .polls-list {
@@ -11,6 +13,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border: 1px solid black; 
 }
 
 .poll-question {
@@ -18,21 +21,25 @@
   font-weight: bold;
   margin-bottom: 20px;
   width: 100%;
-  text-align: left;
+  text-align: center;
+
+  
 }
+
 
 .poll-options {
   font-size: 1.2em;
   color: gray;
   margin-bottom: 20px;
   width: 100%;
-  text-align: left;
+  text-align: left; 
 }
 
 .poll-buttons {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  
 }
 
 .view-poll-button,
@@ -48,7 +55,7 @@
 }
 
 .delete-poll-button {
-  background-color: #ea4c88;
+  background-color: #4c96ea;
   color: white;
 }
 

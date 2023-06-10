@@ -18,7 +18,7 @@ let url = "http://127.0.0.1:8000/api-auth/";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({});
+  const [error, setError] = useState('');
   const [isLoggedIn, setLogin] = useState("");
 
 
@@ -48,8 +48,8 @@ function Login() {
         setLogin(true);
       })
       .catch((err) => {
-        // console.log(data);
-      setError(JSON.parse(err.request.response))
+        console.log(error);
+      setError("Wrong username or password")
     });
 
   };
@@ -67,11 +67,12 @@ function Login() {
     <>
       <div className="align">
         <div className="grid">
+               {error && <div className="error">{error}</div>}
           <form
             className="form login"
           >
             <div className="form__field">
-              
+             
               <input
                 autoComplete="username"
                 id="login__username"
@@ -84,6 +85,7 @@ function Login() {
               />
             </div>
             <div className="form__field">
+          
 
               <input
                 id="login__password"

@@ -33,7 +33,7 @@ function HomePage() {
               return (
                 <li className="row poll-item" key={item.id}>
                   <div className="row">
-                  <div className="poll-title col-sm-8">
+                  <div className="poll-title col-sm-8 text-justify text-center p-3">
                     {item.title}
                     </div>
                     <div className="poll-date col-sm">

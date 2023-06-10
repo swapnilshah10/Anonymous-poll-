@@ -4,6 +4,8 @@
   text-align: center;
   max-height: 100vh;
   overflow-y: scroll;
+  background-color: #9fd1f0b1;
+  padding: 40px 60px;
 }
 
 .poll-container h2 {
@@ -12,6 +14,9 @@
   font-weight: bold;
 }
 
+.poll-container::-webkit-scrollbar {
+  display: none;
+}
 .radio-option {
   display: flex;
   align-items: center;
@@ -22,12 +27,11 @@
 .radio-option input[type="radio"] {
   margin-right: 10px;
   color: #ea4c88;
-  
 }
 
 button[id="submit-button"] {
   padding: 10px 20px;
-  background-color: #ea4c88;
+  background-color: #4c96ea;
   color: white;
   border: none;
   border-radius: 5px;
@@ -37,7 +41,7 @@ button[id="submit-button"] {
 }
 
 button[id="submit-button"]:hover {
-  background-color:  #f09fbe;
+  background-color:  #4ca3ea;
 }
 
 .backk{

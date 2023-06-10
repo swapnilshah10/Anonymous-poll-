@@ -4,14 +4,14 @@
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    background-color: #f8f9fa;
+    background-color: #9fd1f0b1;
     min-height: 100vh;
   }
   
   .about-page-title {
     font-size: 48px;
     margin-bottom: 20px;
-    color: #343a40;
+    color: #111212;
   }
   
   .about-page-description-container {
@@ -20,12 +20,13 @@
     align-items: center;
     width: 70%;
     text-align: justify;
+
   }
   
   .about-page-description {
     font-size: 22px;
     margin-bottom: 20px;
     line-height: 1.5;
-    color: #343a40;
+    color: #181818;
   }
   

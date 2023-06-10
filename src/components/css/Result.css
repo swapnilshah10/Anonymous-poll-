@@ -2,15 +2,20 @@
   display: flex;
   font-family: "PT Sans";
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: #9fd1f0b1;
   padding: 40px;
-  margin: 20px;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 2rem;
 }
 
 h1 {
   font-size: 2em;
   font-weight: bold;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  
 }
 
 h2 {
@@ -18,38 +23,13 @@ h2 {
   margin-bottom: 40px;
 }
 
-.poll-option {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.poll-option-text {
-  font-size: 18px;
-  margin-right: 20px;
-}
-
-.poll-option-bar {
-  height: 20px;
-  width: 200px;
-  background-color: lightgray;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.poll-option-bar-fill {
-  height: 100%;
-  background-color: #ea4c88;
-  width: 50%;
-}
 
 .buttonn {
   align-self: start;
   font-size: 1.2em;
   margin: 10px;
   text-decoration: none;
-  border: rgb(17, 17, 17);
-  background-color: #ea4c88;
+  background-color: #4c96ea;
   border-radius: 30rem;
   border-style: solid;
   padding: 10px;
@@ -60,4 +40,69 @@ h2 {
   display: flex;
   align-items: flex-start;
   padding: 100px auto;
+}
+
+
+.card {
+  width: 300px auto;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  
+}
+
+.body {
+  padding: 20px;
+  background-color: #9fd1f0b1;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  width: 120px auto;
+  font-size: 26px;
+  /* font-weight: 900; */
+  font-style: italic;
+}
+
+.skill-level {
+  width: 160px;
+  height: 10px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.skill-percent {
+  background-color: #333;
+  height: 100%;
+  align-items: right;
+}
+
+.skill-percent-number {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.skill-fix {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 0px;
 }
