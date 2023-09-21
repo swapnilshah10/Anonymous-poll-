@@ -10,5 +10,6 @@ urlpatterns = [
     path('polls/' , views.get_all_polls),
     path('<poll_id>/votes/' , views.get_votes),
     path('<poll_id>/choices/', views.get_choices),
-    path('<poll_id>/vote/', views.vote)
+    path('<poll_id>/vote/', views.vote),
+    path('<poll_id>/delete/', views.delete)
 ]

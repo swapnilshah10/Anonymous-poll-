@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
-
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
@@ -47,6 +46,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'first_name')
 
 
+
+
+class OptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Option 
+        fields = '__all__'
+
 class PollsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Polls
@@ -57,12 +63,12 @@ class PollsSerializer(serializers.ModelSerializer):
         del data['author']
         return data
 
-
-class OptionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Option
-        fields = '__all__'
-
+    # def create(self, validated_data):
+    #     tracks_data = validated_data.pop('tracks')
+    #     poll = Polls.objects.create(**validated_data)
+    #     for track_data in tracks_data:
+    #         Option.objects.create(poll = poll, **track_data)
+    #     return poll
 
 class VoteSerializer(serializers.ModelSerializer):
     class Meta:
