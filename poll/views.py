@@ -9,7 +9,6 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import generics
-from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
@@ -23,11 +22,10 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from rest_auth.registration.views import SocialLoginView
+# from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+# from rest_auth.registration.views import SocialLoginView
 
-class UserTokenView(SocialLoginView):
-    adapter_class = GoogleOAuth2Adapter
+class UserTokenView():
     authentication_classes = (TokenAuthentication,)
 
     def post(self, request, *args, **kwargs):
@@ -41,7 +39,6 @@ class UserTokenView(SocialLoginView):
 
 class UserDetailAPI(APIView):
   authentication_classes = (TokenAuthentication,)
-  adapter_class = GoogleOAuth2Adapter
   permission_classes = (AllowAny,)
   def get(self,request,*args,**kwargs):
     user = User.objects.get(id=request.user.id)
